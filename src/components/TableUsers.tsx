@@ -4,6 +4,7 @@ import 'react-base-table/styles.css'
 import { useSelector } from 'react-redux'
 import { RootState } from '../app/store'
 import { User } from '../models/users.model'
+import ModalDetails from './ModalDetails'
 import ProductPagination from './UsersPagination'
 
 const TableUsers = () => {
@@ -11,7 +12,8 @@ const TableUsers = () => {
     const [modal, setModal] = useState(false);
     const [pag,setPag]=useState<any>({})
     const [nroItems,setNroItems]=useState(10)
-   
+    
+ 
    
    
     useEffect(()=>{
@@ -23,8 +25,6 @@ const TableUsers = () => {
             totalPages:(listUsers.length/nroItems)>Math.trunc(listUsers.length/nroItems)?(listUsers.length/nroItems)+1:Math.trunc(listUsers.length/nroItems),
             totalItems:listUsers.length
           })
-       
-
       }
     },[listUsers])
 
@@ -35,11 +35,10 @@ const TableUsers = () => {
                 let newobj={title:e,content:rowData[e]}
                 return newobj
             })
-
+            setModal(true);
             
-        console.log(userDetails)
-
-        
+       
+       
     }
 
     const columnsUsers = [
@@ -92,11 +91,11 @@ const TableUsers = () => {
     <div>
            <BaseTable   columns={columnsUsers} data={listUsers.slice(pag.pageIni,pag.pageEnd)} width={900} height={550}  rowEventHandlers={{onClick: (e)=>hadleRowEvent(e)}}/>
            {columnsUsers.length>0&&<ProductPagination pag={pag} setPag={setPag} nroItems={nroItems}/>}
-         
+            {modal&&<ModalDetails setModal={setModal}/>}  
             
             
             {
-            
+           
             /*            
             {columnsUsers.length>0&&columnsUsers.map((col,index)=>
             <Column title={col} key={index} dataKey={col} width={300}></Column>
