@@ -92,7 +92,12 @@ const TableUsers = () => {
     <div>
            <BaseTable   columns={columnsUsers} data={listUsers.slice(pag.pageIni,pag.pageEnd)} width={900} height={550}  rowEventHandlers={{onClick: (e)=>hadleRowEvent(e)}}/>
            {columnsUsers.length>0&&<ProductPagination pag={pag} setPag={setPag} nroItems={nroItems}/>}
-            {/*            
+         
+            
+            
+            {
+            
+            /*            
             {columnsUsers.length>0&&columnsUsers.map((col,index)=>
             <Column title={col} key={index} dataKey={col} width={300}></Column>
             )} */}
