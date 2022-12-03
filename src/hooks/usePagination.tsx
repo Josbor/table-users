@@ -32,7 +32,7 @@ export default function usePaginationComponent(content: any, nroItems: number) {
 
     const [pagContent, setPagContent] = useState<any[]>([])
     const [currentPage, setCurrentPage] = useState(1)
-    const [pageinit, setPageInit] = useState<number>()
+    const [pageinit, setPageInit] = useState<number>(0)
     const [pageEnd, setPageEnd] = useState<number>()
     const [totalPages, setTotalPages] = useState<number>(0)
 
@@ -48,6 +48,10 @@ export default function usePaginationComponent(content: any, nroItems: number) {
         }
     }, [content])
 
+    useEffect(()=>{
+        setPagContent(content.slice(pageinit==1?0:pageinit, pageEnd))
+
+    },[currentPage])
 
     const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
 
@@ -58,7 +62,7 @@ export default function usePaginationComponent(content: any, nroItems: number) {
         setPageInit(value == 1 ? 1 : (value * nroItems) - nroItems)
         setPageEnd(value == 1 ? nroItems : (value * nroItems))
         setCurrentPage(value)
-        setPagContent(content.slice(pageinit, pageEnd))
+        
 
     };
 

@@ -8,7 +8,6 @@ import usePaginationComponent from '../hooks/usePagination';
 
 const TableUsers = () => {
   const { getListUsers, userList, selectUser } = useStoreControl()
-  const [nroItems, setNroItems] = useState(10)
   const [openModal,ModalComponent]:any=useModal(Details)
   const [paginatedList,Pagination]:any=usePaginationComponent(userList,10)
  
@@ -21,8 +20,7 @@ const TableUsers = () => {
 
 
   const hadleRowEvent = ({ rowData }: any) => {
-    //const userDetails=userList.de
-    const userDetails = Object.keys(rowData).map(e => {
+      const userDetails = Object.keys(rowData).map(e => {
       let newobj = { title: e, content: rowData[e] }
       return newobj
     })
@@ -85,7 +83,7 @@ const TableUsers = () => {
       <BaseTable columns={columnsUsers} data={paginatedList} width={900} height={550} rowEventHandlers={{ onClick: (e) => hadleRowEvent(e) }} />
       }
       {columnsUsers.length > 0 && <Pagination/>}
-      <ModalComponent/>
+   
     </div>
   )
 }
