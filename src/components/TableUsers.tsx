@@ -20,10 +20,7 @@ const TableUsers = () => {
 
 
   const hadleRowEvent = ({ rowData }: any) => {
-      const userDetails = Object.keys(rowData).map(e => {
-      let newobj = { title: e, content: rowData[e] }
-      return newobj
-    })
+     
     openModal()
     selectUser(rowData)
 

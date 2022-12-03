@@ -1,17 +1,27 @@
 import { Box, Paper, Typography } from '@mui/material'
 import React from 'react'
 import useFormatContent from '../hooks/useFormatContent';
+import { useStoreControl } from '../hooks/useStoreControl';
+import { useEffect } from 'react';
 
 
 
 const Details = () => {
+    const {selectedUser}:any=useStoreControl()
+    const DetailsContent=useFormatContent(selectedUser)
+
+
     return (
         <Box className='detailsBox'>
-            <Paper elevation={3} >
-                <Typography variant="h6" component="h2">
-                    <p>this is a details</p>
-                </Typography>
+              <div className='container-image'>
+                  <img src={selectedUser.image} alt="" />
+                </div>
+            <Paper className='paper-details' elevation={0} >
+             <DetailsContent />
+            
+                
             </Paper>
+            
         </Box>
     )
 }

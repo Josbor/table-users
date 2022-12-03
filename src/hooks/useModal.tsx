@@ -22,6 +22,7 @@ const useModal = (Component:any=null) => {
             onClose={handleClose}
             aria-labelledby="modal-modal-title"
             aria-describedby="modal-modal-description"
+            style={{display:'flex',alignItems:'center',justifyContent:'center'}}
             >
           {Component? <><Component/></>: <p>missing a component</p>}
          
