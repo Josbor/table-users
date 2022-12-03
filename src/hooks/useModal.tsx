@@ -1,5 +1,5 @@
-import { Modal, OpenReason } from '@mui/material'
-import React, { useState } from 'react'
+import { Modal } from '@mui/material'
+import  { useState } from 'react'
 
 
 
@@ -23,7 +23,7 @@ const useModal = (Component:any=null) => {
             aria-labelledby="modal-modal-title"
             aria-describedby="modal-modal-description"
             >
-          {Component? <Component/>: <p>missing a component</p>}
+          {Component? <><Component/></>: <p>missing a component</p>}
          
         </Modal>
           </>

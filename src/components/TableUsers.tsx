@@ -83,7 +83,7 @@ const TableUsers = () => {
       <BaseTable columns={columnsUsers} data={paginatedList} width={900} height={550} rowEventHandlers={{ onClick: (e) => hadleRowEvent(e) }} />
       }
       {columnsUsers.length > 0 && <Pagination/>}
-   
+      <ModalComponent/>
     </div>
   )
 }
