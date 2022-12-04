@@ -4,11 +4,16 @@ import useFormatContent from '../hooks/useFormatContent';
 import { useStoreControl } from '../hooks/useStoreControl';
 import { useEffect } from 'react';
 
+const exceptions=[
+    'image',
+    'id',
+    'userAgent'
+]
 
 
 const Details = () => {
     const {selectedUser}:any=useStoreControl()
-    const DetailsContent=useFormatContent(selectedUser)
+    const DetailsContent=useFormatContent(selectedUser,exceptions)
 
 
     return (

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import {  } from '../features/selectedUserSlice';
 
-const useFormatContent = (content:any) => {
+const useFormatContent = (content:any,exception:any[]) => {
   // const userDetails = Object.keys(content).map(e => {
   //   let newobj = { tittle: e, content: content[e] }
   //   return newobj
@@ -13,7 +13,7 @@ const useFormatContent = (content:any) => {
     let newobj = { tittle: e, content: content[e] }
     return newobj
   })
-  return newObject
+  return newObject.filter(e=>!(exception.some(p=>p===e.tittle)))
 }
 
  const details=objectTransform(content)
@@ -24,20 +24,7 @@ const useFormatContent = (content:any) => {
     return(
       <>
       {details.map(({tittle,content}:any,index:any)=>{
-        if (typeof content==='object'){
-              
-                
-                objectTransform(content).map(({tittle,content}:any,index:any)=>(
-                
-                <div className='flex-col2' key={index}>
-                <p>{tittle}</p>
-                <p>{content}</p>
-              </div>)
-                  
-                  )
-                
-                
-        }else{
+        if (typeof content!=='object'){
           return (
           <div className='flex-col2' key={index}>
             <p className='bold'>{tittle}</p>
